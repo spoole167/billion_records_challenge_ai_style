@@ -8,3 +8,11 @@ To compile and run:
 
 
 Remember to create a large text file (`your_input_file.txt`) with the specified format for testing.  The performance will heavily depend on the hardware and the size of the input file.  Further optimization might involve using more advanced techniques like custom memory mapped I/O for file reading (which would require additional libraries).  This example prioritizes simplicity and readability while still leveraging Java's parallel processing capabilities.
+
+Citation Sources
+https://github.com/ReciprocalNet/ReciprocalNet 
+https://github.com/hashgraph/hedera-services 
+https://github.com/nickperov/JavaExam 
+https://github.com/pinterest/singer 
+https://github.com/ygpark2/spring-boot-jwt 
+https://www.codeproject.com/Questions/756236/How-do-I-count-numbers-inside-a-text-file 
