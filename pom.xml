@@ -19,11 +19,16 @@
 <module>GitHubCoPilot</module>
 <module>GoogleVertexGemini1.5</module>
 
-<module>chatgpt4o</module>
+    <!--
 
         <module>Gemini1.5Flash</module>
         <module>CodeConvert</module>
+        <module>ChatGPT4o</module>
+        -->
+
         <module>MicrosoftCoPilot</module>
+        <module>Zencoder</module>
+
 
     </modules>
     <properties>

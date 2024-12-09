@@ -12,6 +12,6 @@
   <packaging>jar</packaging>
 
   <properties>
-    <maven.compiler.source>19</maven.compiler.source>
+    <maven.compiler.release>19</maven.compiler.release>
   </properties>
 </project>
