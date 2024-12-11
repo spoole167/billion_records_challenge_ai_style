@@ -8,34 +8,21 @@
     <packaging>pom</packaging>
 
     <modules>
-
         <module>AmazonQ</module>
-<module>ChatGPT4Legacy</module>
-<module>ChatGPT4oMini</module>
-<module>ChatGPTo1</module>
-<module>ChatGPToMini</module>
-<module>Claude</module>
-
-
-<module>GitHubCoPilot</module>
-<module>GoogleVertexGemini1.5</module>
-
-
-
+        <module>ChatGPT4Legacy</module>
+        <module>ChatGPT4oMini</module>
+        <module>ChatGPTo1</module>
+        <module>ChatGPToMini</module>
+        <module>Claude</module>
+        <module>CodeConvert</module>
         <module>Gemini1.5Flash</module>
-
-
-      <module>CodeConvert</module>
-
-
-    <module>ChatGPT4o</module>
-
-
-        <module>MicrosoftCoPilot</module>
+        <module>GitHubCoPilot</module>
+        <module>GoogleVertexGemini1.5</module>
+        <module>MicrosoftCopilot</module>
         <module>Zencoder</module>
-
-
     </modules>
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
