@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <modules>
+
         <module>AmazonQ</module>
 <module>ChatGPT4Legacy</module>
 <module>ChatGPT4oMini</module>
@@ -19,12 +20,16 @@
 <module>GitHubCoPilot</module>
 <module>GoogleVertexGemini1.5</module>
 
-    <!--
+
 
         <module>Gemini1.5Flash</module>
-        <module>CodeConvert</module>
-        <module>ChatGPT4o</module>
-        -->
+
+
+      <module>CodeConvert</module>
+
+
+    <module>ChatGPT4o</module>
+
 
         <module>MicrosoftCoPilot</module>
         <module>Zencoder</module>

@@ -11,3 +11,14 @@ Stream API: Utilizes the Stream API for efficient data processing and collection
 Efficient Data Structures: Uses a HashMap to store station data, providing fast lookup and insertion.
 Optimized Data Structure: The StationData class is designed for efficient updates and calculations.
 By combining these optimizations, this program can effectively process large datasets and provide fast results.
+
+---
+
+---
+
+
+Notes
+
+Generated code failed to compile. Output reporting was broken.
+
+![img.png](img.png)

@@ -50,7 +50,7 @@ public class WeatherStationProcessor {
                 .forEach(entry -> {
                     String station = entry.getKey();
                     StationStatistics stats = entry.getValue();
-                    double mean = stats.sum.get() / stats.count.get();
+                    double mean = stats.sum.doubleValue() / stats.count.doubleValue();
                     System.out.printf("%s=%.1f/%.1f/%.1f%n", station, stats.min, mean, stats.max);
                 });
     }

@@ -70,10 +70,13 @@ public class WeatherDataProcessor {
         List<Map.Entry<String, StationData>> sortedData = new ArrayList<>(stationData.entrySet());
         Collections.sort(sortedData, (a, b) -> a.getKey().compareTo(b.getKey()));
 
-        sortedData.stream()
+        System.out.println(
+                sortedData.stream()
                 .map(entry -> entry.getKey() + "=" + entry.getValue())
                 .collect(Collectors.joining(", ", "{", "}"))
-                .forEach(System.out::println);
+
+        );
+
     }
 
     /**

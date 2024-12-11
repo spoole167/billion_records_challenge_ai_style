@@ -31,7 +31,8 @@ public class WeatherDataProcessor {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("#")) continue;
-                executor.submit(() -> processLine(line, stationData));
+                String finalLine = line;
+                executor.submit(() -> processLine(finalLine, stationData));
             }
         } catch (IOException e) {
             e.printStackTrace();

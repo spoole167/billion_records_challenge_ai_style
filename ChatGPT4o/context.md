@@ -29,3 +29,21 @@ The input file fits within the constraints of available disk and memory I/O.
 Java 20 or later is installed to support modern features and optimal GC performance.
 
 Let me know if you need further adjustments or enhancements!
+
+--- 
+
+--- 
+
+Notes 
+
+Failed to compile
+
+symbol:   method get()
+[ERROR]   location: variable sum of type java.util.concurrent.atomic.DoubleAdder
+
+symbol:   method get()
+[ERROR]   location: variable count of type java.util.concurrent.atomic.LongAdder
+
+
+
+![img.png](img.png)
