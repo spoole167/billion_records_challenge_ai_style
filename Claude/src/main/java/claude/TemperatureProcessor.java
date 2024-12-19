@@ -56,9 +56,9 @@ public class TemperatureProcessor {
             .sorted(Map.Entry.comparingByKey())
             .forEach(entry -> System.out.printf("%s=%s%n", 
                 entry.getKey(), entry.getValue()));
-
-        System.err.printf("Processing Time: %.2f seconds%n", 
-            (endTime - startTime) / 1_000_000_000.0);
+        // SP - removed for speed test
+       // System.err.printf("Processing Time: %.2f seconds%n",
+       //     (endTime - startTime) / 1_000_000_000.0);
     }
 
     /**

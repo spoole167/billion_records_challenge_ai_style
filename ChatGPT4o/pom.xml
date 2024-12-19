@@ -11,8 +11,5 @@
   <artifactId>ChatGPT4o</artifactId>
   <packaging>jar</packaging>
 
-  <properties>
-    <maven.compiler.release>20</maven.compiler.release>
-  </properties>
-  
+
 </project>
