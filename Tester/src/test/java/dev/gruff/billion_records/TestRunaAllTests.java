@@ -24,7 +24,33 @@ public class TestRunaAllTests {
 
     public static final String BRC_MEASUREMENTS_TXT = "/Users/spoole/Documents/GitHub/1brc/measurements.txt";
     public static final String SAMPLE = "src/test/resources/sample.txt";
+    public static Map<String,File> candidates=buildCandidates();
+    public static Map<String,File> buildCandidates() {
 
+        Map<String,File> candidates=new TreeMap<>();
+
+        File rootDir=new File("../");
+        File[] files=rootDir.listFiles();
+        for(File f:files){
+            if(!f.isDirectory())continue;
+            if(f.getName().startsWith("."))continue;
+            if(f.getName().equals("Tester"))continue;
+            File pom=new File(f,"pom.xml");
+            if(pom.exists()){
+                try {
+                    File main = getMain(f);
+                    candidates.put(f.getName(),main);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }
+        return candidates;
+
+
+
+    }
     static class TestRun {
         String name;
         File main;
@@ -59,10 +85,6 @@ public class TestRunaAllTests {
         File output=new File(dir,""+count);
         output.mkdirs();
 
-        Path projRoot=Paths.get("..").toAbsolutePath().normalize();
-
-        File[] dirs= projRoot.toFile().listFiles();
-
         FileWriter fw=new FileWriter(new File(output,"summary.csv"));
         PrintWriter pw=new PrintWriter(fw);
         pw.println("#Test Results x3");
@@ -70,24 +92,14 @@ public class TestRunaAllTests {
         pw.println("# Count :"+count);
         pw.println("project,count,elapsed,unit,completed");
 
-        TreeMap<String,TestRun> modules=new TreeMap<>();
-
         for(int i=1;i<4; i++) {
             System.out.println("---");
             System.out.println("--- PASS "+i+"  of "+testFile+" * "+count);
             System.out.println("---");
-            for (File proj : dirs) {
-                String name = proj.getName();
-                if (name.equals("Tester")) continue;
-                if (name.startsWith(".")) continue;
-                if (!proj.isDirectory()) continue;
 
-                File pom = new File(proj, "pom.xml");
-                if (!pom.exists()) continue;
-                File main = getMain(proj);
+            for (String name :candidates.keySet()) {
+                File main =candidates.get(name);
                 runTest(output, pw, testFile, name, main, count);
-
-
             }
         }
         pw.close();
@@ -178,7 +190,7 @@ public class TestRunaAllTests {
 
     }
 
-    private File getMain(File proj) throws IOException {
+    private static File getMain(File proj) throws IOException {
 
         File target=new File(proj,"target");
         File classes=new File(target,"classes");
@@ -189,7 +201,7 @@ public class TestRunaAllTests {
         return mainClass.map(Path::toFile).orElse(null);
     }
 
-    private boolean isMainClass(Path path) {
+    private static boolean isMainClass(Path path) {
         if (!path.toString().endsWith(".class")) return false;
         if (path.toString().contains("$")) return false;
 
