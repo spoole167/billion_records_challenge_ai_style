@@ -11,7 +11,7 @@ public class LocalClassInstantiator {
     Method method;
     ClassLoader classLoader;
 
-    public LocalClassInstantiator(File root) throws Exception {
+    public LocalClassInstantiator(File root){
         this.root=root;
         classLoader = new ClassLoader() {
             @Override
@@ -46,7 +46,7 @@ public class LocalClassInstantiator {
 
     }
 
-    public Method getMain(String className) throws Exception {
+    public Method getMain(String className) throws ClassNotFoundException, NoSuchMethodException {
 
 
 

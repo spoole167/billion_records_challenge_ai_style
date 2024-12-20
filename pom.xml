@@ -22,6 +22,8 @@
         <module>Zencoder</module>
 
         <module>Tester</module>
+        <module>CodeGPT</module>
+        <module>Grimoire</module>
 
     </modules>
 
