@@ -34,7 +34,7 @@ Optimize for speed using modern Java features (e.g., threads, Vector API, SIMD, 
 
 | Provider/LLM                   | Compiled   | Doc | Ran Sample Set | Arithmetic | Format | Order | Ran 1BRC |
 |--------------------------------|------------|-----|----------------|------------|--------|-------|----------|
-| Amazon Q Developer             | ✅          | ✅   | -              | -          | -      | -     | -        |
+| Amazon Q Developer             | ✅          | ✅   | ✔️               | ✔️           | ✔️       | ✔️      | ✔️        |
 | ChatGPT4 legacy                | ✅          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
 | ChatGPT4 o                     | ❌          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    |          |
 | ChatGPT4 oMini                 | ✅          | ✅   |                | ✅          | ✅      | ✅     | ❌        |
