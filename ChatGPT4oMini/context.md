@@ -43,3 +43,10 @@ The output will be the weather stations sorted alphabetically with their min, me
 ### Considerations
 
 - The program assumes the input data fits within memory limits. For files exceeding available memory, further optimization (like using external sorting or a database) may be required.
+
+
+---
+
+# Notes 
+
+Output format is incorrect

@@ -9,9 +9,7 @@ import java.lang.classfile.ClassModel;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -19,7 +17,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * This class is responsible for executing all sample tests for projects located in a specified directory.
  * It filters directories to find valid projects, identifies the main class, and runs tests using a predefined sample file.
  */
-public class TestRunaAllTests {
+public class RunaAllTest {
+
+    private static record TestData(String project, int count, long millis, double fmillis, TestResult result) { }
 
     public static final String BRC_MEASUREMENTS_TXT = "/Users/spoole/Documents/GitHub/1brc/measurements.txt";
     public static final String SAMPLE = "src/test/resources/sample.txt";
@@ -50,11 +50,7 @@ public class TestRunaAllTests {
 
 
     }
-    static class TestRun {
-        String name;
-        File main;
-        long time;
-    }
+
     @Test
     void ArunSample1Count() throws IOException {
 
@@ -90,13 +86,15 @@ public class TestRunaAllTests {
         File output=new File(dir,""+count);
         output.mkdirs();
 
-        FileWriter fw=new FileWriter(new File(output,"summary.csv"));
+        FileWriter fw=new FileWriter(new File(output,"timings.csv"));
         PrintWriter pw=new PrintWriter(fw);
         pw.println("#Test Results x3");
         pw.println("# Data :"+testFile);
         pw.println("# Count :"+count);
         pw.println("project,count,elapsed,unit,completed");
 
+        Map<String, List<TestData>> results=new TreeMap<>();
+        results.clear();
         for(int i=1;i<4; i++) {
             System.out.println("---");
             System.out.println("--- PASS "+i+"  of "+testFile+" * "+count);
@@ -104,9 +102,29 @@ public class TestRunaAllTests {
 
             for (String name :candidates.keySet()) {
                 File main =candidates.get(name);
-                runTest(output, pw, testFile, name, main, count);
+                TestData td=runTest(output, pw, testFile, name, main, count);
+                if(td!=null && td.result()==TestResult.PASS) {
+                    List<TestData> l=results.computeIfAbsent(name, k->new ArrayList<>());
+                    l.add(td);
+                }
             }
         }
+        pw.close();
+
+       fw=new FileWriter(new File(output,"summary.csv"));
+       pw=new PrintWriter(fw);
+        pw.println("#Test Results");
+        pw.println("# Data :"+testFile);
+        pw.println("# Count :"+count);
+        pw.println("project,count,average");
+
+        PrintWriter finalPw = pw;
+        results.keySet().forEach(k->{
+            List<TestData> l=results.get(k);
+            double avg=l.stream().mapToDouble(TestData::fmillis).sum()/l.size();
+            finalPw.printf("%s,%d,%f\n",k,count,avg);
+        });
+
         pw.close();
     }
 
@@ -123,7 +141,7 @@ public class TestRunaAllTests {
      */
 
 
-    private void runTest(File dir,PrintWriter reporter,String testFile,String project,File main,int count) {
+    private TestData runTest(File dir, PrintWriter reporter, String testFile, String project, File main, int count) {
 
         String path=main.getAbsolutePath();
         int classesPos=path.indexOf("classes");
@@ -148,13 +166,13 @@ public class TestRunaAllTests {
 
             reporter.printf("%s,%d,%d,%f,%s\n",project,count,millis,fmillis,r.name());
             System.out.printf("    %s,%d,%d,%f,%s\n",project,count,millis,fmillis,r.name());
-
+            return new TestData(project,count,millis,fmillis,r);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
+        return null;
 
     }
 
