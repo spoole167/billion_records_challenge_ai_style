@@ -13,6 +13,9 @@ import java.util.*;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static dev.gruff.billion_records.Data.BRC_MEASUREMENTS_TXT;
+import static dev.gruff.billion_records.Data.SAMPLE;
+
 /**
  * This class is responsible for executing all sample tests for projects located in a specified directory.
  * It filters directories to find valid projects, identifies the main class, and runs tests using a predefined sample file.
@@ -21,8 +24,6 @@ public class RunaAllTest {
 
     private static record TestData(String project, int count, long millis, double fmillis, TestResult result) { }
 
-    public static final String BRC_MEASUREMENTS_TXT = "/Users/spoole/Documents/GitHub/1brc/measurements.txt";
-    public static final String SAMPLE = "src/test/resources/sample.txt";
     public static Map<String,File> candidates=buildCandidates();
     public static Map<String,File> buildCandidates() {
 
