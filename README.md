@@ -34,18 +34,21 @@ Optimize for speed using modern Java features (e.g., threads, Vector API, SIMD, 
 
 | Provider/LLM                   | Compiled   | Doc | Ran Sample Set | Arithmetic | Format | Order | Ran 1BRC |
 |--------------------------------|------------|-----|----------------|------------|--------|-------|----------|
-| Amazon Q Developer             | ✅          | ✅   | ✔️               | ✔️           | ✔️       | ✔️      | ✔️        |
-| ChatGPT4 legacy                | ✅          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| ChatGPT4 o                     | ❌          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    |          |
-| ChatGPT4 oMini                 | ✅          | ✅   |                | ✅          | ✅      | ✅     | ❌        |
-| ChatGPT oMini                  | ✅️         | ❌   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| Claude                         | ✅          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| CodeConvert                    | ❌          | ❌   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| Gemini 1.5 Flash               | ❌          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| GitHub CoPilot                 | ✅          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| Google Vertex Gemini 1.5 Flash | ✅          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| Microsoft CoPilot              | ✅ ️        | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
-| Zencoder                       | ✅          | ✅   | ✔️             | ✔️         | ✔️     | ✔️    | ✔️       |
+| Amazon Q Developer             | ✅          | ✅   |  ✅           |  ✅         |  ✅    | ✅      |  ✅        |
+| ChatGPT4 legacy                | ✅          | ✅   |  ✅           |  ✅         |  ✅    | ✅     |  ✅       |
+| ChatGPT4 o                     | ❌          | ✅   |  ✅           |  ✅         |  ❌    | ✅     |    ✅       |
+| ChatGPT4 oMini                 | ✅          | ✅   |  ✅           |  ✅         |  ❌    | ✅     | ❌        |
+| ChatGPTo1                      | ✅️          | ✅   |  ✅           |  ✅         |  ❌    | ✅     |  ✅       |
+| ChatGPT oMini                  | ✅️          | ❌   |  ✅           |  ✅         |  ✅    | ✅     |  ✅       |
+| Claude                         | ✅          | ✅   |  ✅           |  ✅         |  ❌    | ❌     |  ✅      |
+| CodeConvert                    | ❌          | ❌   |  ✅           |  ✅         |  ✅    | ✅     |  ✅      |
+| Gemini 1.5 Flash               | ❌          | ✅   |  ✅           |  ✅         |  ✅    | ✅     |  ✅       |
+| GitHub CoPilot                 | ✅          | ✅   |  ✅           |  ✅         |  ❌    | ✅     |  ✅      |
+| Google Vertex Gemini 1.5 Flash | ✅          | ✅   |  ✅           |  ✅         |  ❌    | ✅     | ✅       |
+| Grimore                        | ✅          | ✅   |  ✅           |  ✅         |  ✅    | ✅     | ✅       |
+| JetBrains AI Assistant         | ✅          | ✅   |  ✅           |  ✅         |  ✅    | ✅     | ✅       |
+| Microsoft CoPilot              | ✅ ️         | ✅   |  ✅           |  ✅         |  ❌    | ✅  | ✅       |
+| Zencoder                       | ✅          | ✅   |  ✅           |  ✅         |  ❌    |  ✅     |  ✅       |
 
 
 
