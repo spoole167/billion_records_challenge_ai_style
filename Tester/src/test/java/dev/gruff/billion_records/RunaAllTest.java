@@ -13,8 +13,9 @@ import java.util.*;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static dev.gruff.billion_records.Data.BRC_MEASUREMENTS_TXT;
-import static dev.gruff.billion_records.Data.SAMPLE;
+import static dev.gruff.billion_records.Data.BRC;
+import static dev.gruff.billion_records.Data.sample;
+
 
 /**
  * This class is responsible for executing all sample tests for projects located in a specified directory.
@@ -55,30 +56,30 @@ public class RunaAllTest {
     @Test
     void ArunSample1Count() throws IOException {
 
-        runTestGroup(SAMPLE,"sample", 1);
+        runTestGroup(sample(),"sample", 1);
 
     }
     @Test
     void BrunSample1KCount() throws IOException {
 
-        runTestGroup(SAMPLE,"sample", 1000);
+        runTestGroup(sample(),"sample", 1000);
 
     }
 
     @Test
     void CrunSample100KCount() throws IOException {
 
-        runTestGroup(SAMPLE,"sample", 100000);
+        runTestGroup(sample(),"sample", 100000);
 
     }
 
     @Test
     void DrunBRC1Count() throws IOException {
 
-        runTestGroup(BRC_MEASUREMENTS_TXT,"brc", 1);
+        runTestGroup(BRC(),"brc", 1);
 
     }
-    private void runTestGroup(String testFile, String desc,int count) throws IOException {
+    private void runTestGroup(File testFile, String desc, int count) throws IOException {
 
         File dir=new File("target");
         dir=new File(dir,"results");
@@ -142,7 +143,7 @@ public class RunaAllTest {
      */
 
 
-    private TestData runTest(File dir, PrintWriter reporter, String testFile, String project, File main, int count) {
+    private TestData runTest(File dir, PrintWriter reporter, File testFile, String project, File main, int count) {
 
         String path=main.getAbsolutePath();
         int classesPos=path.indexOf("classes");
@@ -177,7 +178,7 @@ public class RunaAllTest {
 
     }
 
-    private TestResult runProcess(File outputFile, String project, String cp, String main, String testfile, int count)  {
+    private TestResult runProcess(File outputFile, String project, String cp, String main, File testfile, int count)  {
         File target=new File("target");
         File testclasses=new File(target,"test-classes");
         String classpath=testclasses.getAbsolutePath()+java.io.File.pathSeparator+cp;
@@ -185,9 +186,9 @@ public class RunaAllTest {
         ProcessBuilder processBuilder = new ProcessBuilder();
 
         if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-            processBuilder.command("java.exe", "-cp",classpath,"--enable-preview","dev.gruff.billion_records.TestRunner",cp,main,testfile,""+count);
+            processBuilder.command("java.exe", "-cp",classpath,"--enable-preview","dev.gruff.billion_records.TestRunner",cp,main,testfile.getAbsolutePath(),""+count);
         } else {
-            processBuilder.command("java", "-cp", classpath,"--enable-preview","dev.gruff.billion_records.TestRunner",cp,main,testfile,""+count);
+            processBuilder.command("java", "-cp", classpath,"--enable-preview","dev.gruff.billion_records.TestRunner",cp,main,testfile.getAbsolutePath(),""+count);
         }
 
         // Setting the output file for redirection
