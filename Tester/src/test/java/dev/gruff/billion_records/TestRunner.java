@@ -42,7 +42,7 @@ public class TestRunner {
 
         private  static void execute(Method method,String testFile, int count) throws InvocationTargetException, IllegalAccessException {
 
-        watchDog(180);
+        watchDog(180*count);
 
 
             for(int i=0;i<count;++i) {
